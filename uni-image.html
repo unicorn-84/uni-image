@@ -1,0 +1,117 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/paper-spinner/paper-spinner-lite.html">
+
+<dom-module id="uni-image">
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+      }
+
+      img,
+      paper-spinner-lite {
+        transition: 0.3s opacity ease-out;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      paper-spinner-lite {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        --paper-spinner-stroke-width: 2px;
+      }
+    </style>
+      <img id="img" alt$="[[alt]]" on-load="onImgLoad" on-error="onImgError">
+      <paper-spinner-lite id="spinner"></paper-spinner-lite>
+  </template>
+
+  <script>
+    /* eslint-disable semi */
+
+    /**
+     * `uni-image`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+
+    class UniImage extends Polymer.Element {
+      static get is() {
+        return 'uni-image';
+      }
+
+      static get properties() {
+        return {
+          alt: String,
+          src: {
+            type: String,
+            observer: 'srcChanged',
+          },
+          spinner: {
+            type: Boolean,
+            observer: 'spinnerChanged',
+          },
+          color: {
+            type: String,
+            value: '#808080',
+            observer: 'colorChanged',
+          },
+        };
+      }
+
+      ready() {
+        super.ready();
+        if (!this.src) {
+          this.$.spinner.active = false;
+          this.onImgError();
+        }
+      }
+
+      srcChanged(src) {
+        this.$.img.removeAttribute('src');
+        this.$.img.style.transition = '';
+        this.$.img.style.opacity = 0;
+        if (src) {
+          this.$.img.src = src;
+        }
+      }
+
+      onImgLoad() {
+        this.$.img.style.opacity = 1;
+        this.$.spinner.style.opacity = 0;
+        setTimeout(() => {
+          this.$.spinner.active = false;
+          this.$.spinner.style.display = 'none';
+        }, 500);
+      }
+
+      onImgError() {
+        setTimeout(() => {
+          this.$.spinner.active = false;
+          this.$.spinner.style.display = 'none';
+        }, 500);
+        this.$.img.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#CCCCCC" d="M21 21V3H3v18h18zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z" class="st0"/></svg>')}`;
+      }
+
+      spinnerChanged(spinner) {
+        this.$.spinner.active = spinner;
+      }
+
+      colorChanged(color) {
+        this.$.spinner.updateStyles({ '--paper-spinner-color': color });
+      }
+    }
+
+    window.customElements.define(UniImage.is, UniImage);
+  </script>
+</dom-module>
