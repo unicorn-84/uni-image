@@ -1,5 +1,6 @@
 {
   "name": "uniImage",
+  "description": "The improved image element",
   "version": "0.0.1",
   "main": "index.js",
   "repository": "https://github.com/unicorn-84/uniImage.git",
