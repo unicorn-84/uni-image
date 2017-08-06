@@ -22,14 +22,14 @@
     "polymer"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/unicorn-84/uni-image.git",
   "ignore": [
     "*",
     "!uni-image.html"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/unicorn-84/uni-image.git"
+    "url": "git://github.com/unicorn-84/uni-image.git"
   },
   "version": "0.0.1"
 }
