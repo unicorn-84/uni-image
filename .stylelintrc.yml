@@ -1,0 +1,5 @@
+extends: stylelint-config-standard
+processors: stylelint-processor-html
+rules:
+  "selector-type-no-unknown": null
+  "no-empty-source": null

@@ -1,23 +1,29 @@
 {
-  "name": "uniImage",
+  "name": "uni-image",
   "description": "The improved image element",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "index.js",
-  "repository": "https://github.com/unicorn-84/uniImage.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unicorn-84/uniImage.git"
+  },
   "author": "unicorn-84 <dev.kapitonov@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^4.4.0",
+    "eslint": "^4.4.1",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-html": "^3.1.1",
     "eslint-plugin-import": "^2.7.0",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "stylelint-processor-html": "^1.0.0",
-    "stylelint-rscss": "^0.4.0"
+    "stylelint-processor-html": "^1.0.0"
   },
-  "scripts": {
-    "lint:css": "stylelint **/*.{css,html,scss}",
-    "lint:js": "eslint **/*.{js,html}"
-  }
+  "bugs": {
+    "url": "https://github.com/unicorn-84/uniImage/issues"
+  },
+  "homepage": "https://github.com/unicorn-84/uni-image#readme",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {}
 }
